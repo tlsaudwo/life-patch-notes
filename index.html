@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE PATCH NOTES — 내 인생 패치노트</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">▶ LIFE PATCH NOTES</p>
+      <h1><span id="playerName">플레이어</span> <span class="ver" id="currentVersion">v0.0</span></h1>
+      <p class="sub">내 인생의 업데이트 기록. 버그는 고치고, 기능은 추가하자.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="newPatchBtn">＋ 새 패치 배포</button>
+        <button class="btn ghost" id="settingsBtn">⚙ 설정</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" id="stats"></section>
+
+    <section class="filters" id="filters"></section>
+
+    <section id="patchList" class="patch-list"></section>
+  </main>
+
+  <footer class="footer">
+    데이터는 이 브라우저에만 저장됩니다 · 설정에서 백업할 수 있어요
+  </footer>
+
+  <!-- 패치 작성 모달 -->
+  <dialog id="patchDialog">
+    <form id="patchForm" method="dialog">
+      <h2 id="dialogTitle">새 패치 배포</h2>
+      <div class="row">
+        <label>버전
+          <input id="fVersion" required placeholder="27.3" />
+        </label>
+        <label>배포일
+          <input id="fDate" type="date" required />
+        </label>
+      </div>
+      <label>패치 이름 (코드네임)
+        <input id="fTitle" required maxlength="60" placeholder="예: 새벽형 인간 업데이트" />
+      </label>
+
+      <div class="entries-head">
+        <span>변경 사항</span>
+        <button type="button" class="btn small" id="addEntryBtn">＋ 항목 추가</button>
+      </div>
+      <div id="entries"></div>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="cancelBtn">취소</button>
+        <button type="submit" class="btn primary">→ 배포하기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 설정 모달 -->
+  <dialog id="settingsDialog">
+    <form id="settingsForm" method="dialog">
+      <h2>설정</h2>
+      <label>플레이어 이름
+        <input id="sName" maxlength="20" required />
+      </label>
+      <div class="settings-block">
+        <p class="muted">백업 / 복원</p>
+        <div class="row">
+          <button type="button" class="btn small" id="exportBtn">⬇ 내보내기 (JSON)</button>
+          <label class="btn small file-btn">⬆ 가져오기
+            <input type="file" id="importInput" accept="application/json" hidden />
+          </label>
+        </div>
+        <button type="button" class="btn small danger" id="resetBtn">모든 데이터 초기화</button>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="settingsCancel">닫기</button>
+        <button type="submit" class="btn primary">저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
