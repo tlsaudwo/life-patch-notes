@@ -262,8 +262,7 @@ function patchToText(p) {
     lines.push("");
   });
   lines.push("#인생패치노트");
-  return lines.join("
-");
+  return lines.join(String.fromCharCode(10));
 }
 
 $("#filters").addEventListener("click", (ev) => {
