@@ -61,7 +61,7 @@ function save() {
 const $ = (s) => document.querySelector(s);
 function esc(str) {
   return String(str).replace(/[&<>"']/g, (c) =>
-    ({ "&": "&", "<": "<", ">": ">", '"': "&quot;", "'": "&#39;" }[c]));
+    ({ "&": "\u0026amp;", "<": "\u0026lt;", ">": "\u0026gt;", '"': "\u0026quot;", "'": "\u0026#39;" }[c]));
 }
 function cmpVersion(a, b) {
   const pa = String(a).split(".").map(Number);
